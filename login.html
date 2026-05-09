@@ -1,25 +1,47 @@
-<form id="loginForm">
-  <input type="email" placeholder="Email">
-  <input type="password" placeholder="Mot de passe">
-  <button type="submit">Se connecter</button>
-</form>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion</title>
+</head>
+<body>
 
-<script src="auth.js"></script>
+  <form id="loginForm">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Mot de passe" required>
+    <button type="submit">Se connecter</button>
+  </form>
 
-<script>
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  const email = e.target[0].value;
-  const password = e.target[1].value;
+  <!-- ton client Supabase -->
+  <script src="supabase.js"></script>
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
+  <script>
+    const client = window.supabaseClient;
 
-  if (error) return alert(error.message);
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  window.location.href = "dashboard.html";
-});
-</script>
+      const email = document.querySelector('[name="email"]').value;
+      const password = document.querySelector('[name="password"]').value;
+
+      const { error } = await client.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      alert("Connexion réussie !");
+      window.location.href = "dashboard.html";
+    });
+  </script>
+
+</body>
+</html>
