@@ -7,14 +7,17 @@
 </head>
 <body>
 
-<form id="signupForm">
-  <input type="text" name="name" placeholder="Nom" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <input type="password" name="password" placeholder="Mot de passe" required>
-  <button type="submit">Créer un compte</button>
-</form>
+  <form id="signupForm">
+    <input type="text" name="name" placeholder="Nom" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Mot de passe" required>
+    <button type="submit">Créer un compte</button>
+  </form>
 
-<script type="module" src="auth.js"></script>
+  <!-- IMPORTANT : ordre obligatoire -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="auth.js"></script>
 
 </body>
 </html>
