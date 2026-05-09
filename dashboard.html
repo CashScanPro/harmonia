@@ -1,0 +1,22 @@
+<h1>Dashboard</h1>
+
+<button id="logout">Déconnexion</button>
+
+<script src="auth.js"></script>
+
+<script>
+async function checkUser() {
+  const { data } = await supabase.auth.getUser();
+
+  if (!data.user) {
+    window.location.href = "login.html";
+  }
+}
+
+checkUser();
+
+document.getElementById("logout").addEventListener("click", async () => {
+  await supabase.auth.signOut();
+  window.location.href = "login.html";
+});
+</script>
