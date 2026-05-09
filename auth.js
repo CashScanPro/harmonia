@@ -1,4 +1,4 @@
-import { supabase } from "./supabase.js";
+const client = window.supabaseClient;
 
 document.getElementById("signupForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -7,7 +7,7 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
   const email = document.querySelector('[name="email"]').value;
   const password = document.querySelector('[name="password"]').value;
 
-  const { data, error } = await supabase.auth.signUp({
+  const { error } = await client.auth.signUp({
     email,
     password,
     options: {
