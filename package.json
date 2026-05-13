@@ -1,0 +1,14 @@
+{
+    "name": "harmonia",
+    "version": "1.0.0",
+    "description": "Harmonia - Plateforme bien-être premium (méditation, respiration, mobilité, coach IA).",
+    "private": true,
+    "engines": {
+          "node": "20.x"
+    },
+    "dependencies": {
+          "@supabase/supabase-js": "^2.45.0",
+          "stripe": "^16.12.0",
+          "micro": "^10.0.1"
+    }
+}
