@@ -1,0 +1,25 @@
+{
+    "version": 2,
+  "functions": {
+    "api/*.js": {
+            "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    { "source": "/mentions-legales", "destination": "/mentions-legales.html" },
+    { "source": "/cgv", "destination": "/cgv.html" },
+    { "source": "/confidentialite", "destination": "/confidentialite.html" },
+    { "source": "/cookies", "destination": "/cookies.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+      ]
+    }
+  ]
+}
